@@ -1,0 +1,133 @@
+<html>
+<head>
+<title>pizza.dart</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #a9b7c6;}
+.s1 { color: #6a8759;}
+.s2 { color: #cc7832;}
+.s3 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+pizza.dart</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">'package:cloud_firestore/cloud_firestore.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'package:flutter/material.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'package:flutter_myapp/boissons.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'Bottomappbar.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'food.dart'</span><span class="s2">;</span>
+
+<span class="s2">class </span><span class="s0">PIZZA  </span><span class="s2">extends </span><span class="s0">StatefulWidget {</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">_PIZZAState createState() =&gt; _PIZZAState()</span><span class="s2">;</span>
+<span class="s0">}</span>
+
+<span class="s2">class </span><span class="s0">_PIZZAState </span><span class="s2">extends </span><span class="s0">State&lt;PIZZA &gt; {</span>
+  <span class="s0">@override</span>
+  <span class="s0">Widget build(BuildContext context) {</span>
+
+
+    <span class="s2">return </span><span class="s0">MaterialApp(</span>
+      <span class="s0">home: Scaffold(</span>
+        <span class="s0">body: Center(</span>
+          <span class="s0">child: ListView(</span>
+            <span class="s0">children: &lt;Widget&gt;[</span>
+              <span class="s0">Padding(</span>
+                <span class="s0">padding: </span><span class="s2">const </span><span class="s0">EdgeInsets.symmetric(horizontal: </span><span class="s3">20</span><span class="s0">)</span><span class="s2">,</span>
+                <span class="s0">child: Container(</span>
+                  <span class="s0">child : Row(</span>
+                    <span class="s0">children: &lt;Widget&gt;[</span>
+                      <span class="s0">Column(</span>
+                        <span class="s0">crossAxisAlignment: CrossAxisAlignment.start</span><span class="s2">,</span>
+                        <span class="s0">children: &lt;Widget&gt;[</span>
+                          <span class="s0">SizedBox(height: </span><span class="s3">20</span><span class="s2">,</span><span class="s0">)</span><span class="s2">,</span>
+                          <span class="s0">Text(</span>
+                            <span class="s1">'OneClick'</span><span class="s2">,</span>
+                            <span class="s0">style: TextStyle(</span>
+                              <span class="s0">fontSize: </span><span class="s3">50</span><span class="s2">,</span>
+                              <span class="s0">color: Colors.black</span><span class="s2">,</span>
+                              <span class="s0">letterSpacing: -</span><span class="s3">1</span><span class="s2">,</span>
+                              <span class="s0">fontFamily: </span><span class="s1">'Montserrat'</span><span class="s2">,</span>
+                            <span class="s0">)</span><span class="s2">,</span>
+                          <span class="s0">)</span><span class="s2">,</span>
+                          <span class="s0">Text(</span><span class="s1">&quot;Pizza&quot;</span><span class="s2">,</span>
+                            <span class="s0">style: TextStyle(</span>
+                              <span class="s0">fontSize: </span><span class="s3">50</span><span class="s2">,</span>
+                              <span class="s0">color: Colors.black</span><span class="s2">,</span>
+                              <span class="s0">fontFamily: </span><span class="s1">'Montserrat'</span><span class="s2">,</span>
+                            <span class="s0">)</span><span class="s2">,</span><span class="s0">)</span><span class="s2">,</span>
+                        <span class="s0">]</span><span class="s2">,</span>
+                      <span class="s0">)</span>
+                    <span class="s0">]</span><span class="s2">,</span>
+                  <span class="s0">)</span><span class="s2">,</span>
+                <span class="s0">)</span><span class="s2">,</span>
+              <span class="s0">)</span><span class="s2">,</span>
+              <span class="s0">Container(</span>
+                <span class="s0">height: </span><span class="s3">550</span><span class="s2">,</span>
+                <span class="s0">width: double.infinity</span><span class="s2">,</span>
+                <span class="s0">child: DefaultTabController(</span>
+                  <span class="s0">length: </span><span class="s3">2</span><span class="s2">,</span>
+                  <span class="s0">child: Scaffold(</span>
+                    <span class="s0">appBar: AppBar(</span>
+                      <span class="s0">elevation: </span><span class="s3">0.0</span><span class="s2">,</span>
+                      <span class="s0">backgroundColor: Colors.transparent</span><span class="s2">,</span>
+                      <span class="s0">bottom: PreferredSize(</span>
+                        <span class="s0">preferredSize: Size.fromHeight(</span><span class="s3">5</span><span class="s0">)</span><span class="s2">,</span>
+                        <span class="s0">child: Container(</span>
+                          <span class="s0">color: Colors.transparent</span><span class="s2">,</span>
+                          <span class="s0">child: SafeArea(</span>
+                            <span class="s0">child: Column(</span>
+                              <span class="s0">children: &lt;Widget&gt;[</span>
+                                <span class="s0">TabBar(</span>
+                                  <span class="s0">isScrollable: </span><span class="s2">true,</span>
+                                  <span class="s0">labelPadding: EdgeInsets.only(top: </span><span class="s3">10</span><span class="s0">)</span><span class="s2">,</span>
+                                  <span class="s0">indicatorColor: Colors.transparent</span><span class="s2">,</span>
+                                  <span class="s0">labelColor: Colors.black</span><span class="s2">,</span>
+                                  <span class="s0">tabs: &lt;Widget&gt;[</span>
+                                    <span class="s0">Container(</span>
+                                      <span class="s0">padding: EdgeInsets.symmetric(horizontal: </span><span class="s3">30</span><span class="s0">)</span><span class="s2">,</span>
+                                      <span class="s0">child: Text(</span><span class="s1">'Pizza'</span><span class="s2">,</span><span class="s0">style: TextStyle(</span>
+                                        <span class="s0">fontSize: </span><span class="s3">25</span><span class="s2">,</span>
+                                        <span class="s0">fontFamily: </span><span class="s1">'Montserrat'</span><span class="s2">,</span>
+                                      <span class="s0">)</span><span class="s2">,</span><span class="s0">)</span><span class="s2">,</span>
+                                    <span class="s0">)</span><span class="s2">,</span>
+                                    <span class="s0">Container(</span>
+                                      <span class="s0">padding: EdgeInsets.symmetric(horizontal: </span><span class="s3">30</span><span class="s0">)</span><span class="s2">,</span>
+                                      <span class="s0">child: Text(</span><span class="s1">'Boissons'</span><span class="s2">,</span><span class="s0">style: TextStyle(</span>
+                                        <span class="s0">fontSize: </span><span class="s3">25</span><span class="s2">,</span>
+                                        <span class="s0">fontFamily: </span><span class="s1">'Montserrat'</span><span class="s2">,</span>
+                                      <span class="s0">)</span><span class="s2">,</span><span class="s0">)</span><span class="s2">,</span>
+                                    <span class="s0">)</span><span class="s2">,</span>
+                                  <span class="s0">]</span><span class="s2">,</span>
+                                <span class="s0">)</span><span class="s2">,</span>
+                              <span class="s0">]</span><span class="s2">,</span>
+                            <span class="s0">)</span><span class="s2">,</span>
+                          <span class="s0">)</span><span class="s2">,</span>
+                        <span class="s0">)</span><span class="s2">,</span>
+                      <span class="s0">)</span><span class="s2">,</span>
+                    <span class="s0">)</span><span class="s2">,</span>
+                      <span class="s0">body: TabBarView(</span>
+                        <span class="s0">children: &lt;Widget&gt;[</span>
+                          <span class="s0">FOODS()</span><span class="s2">,</span>
+                          <span class="s0">Boissons()</span><span class="s2">,</span>
+                        <span class="s0">]</span><span class="s2">,</span>
+                      <span class="s0">)</span><span class="s2">,</span>
+                  <span class="s0">)</span><span class="s2">,</span>
+                <span class="s0">)</span><span class="s2">,</span>
+              <span class="s0">)</span><span class="s2">,</span>
+            <span class="s0">]</span><span class="s2">,</span>
+          <span class="s0">)</span><span class="s2">,</span>
+        <span class="s0">)</span><span class="s2">,</span>
+        <span class="s0">bottomNavigationBar: BottomBar()</span><span class="s2">,</span>
+      <span class="s0">)</span><span class="s2">,</span>
+      <span class="s0">)</span><span class="s2">;</span>
+  <span class="s0">}</span>
+<span class="s0">}</span>
+</pre>
+</body>
+</html>

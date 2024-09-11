@@ -1,0 +1,71 @@
+<html>
+<head>
+<title>Auth.dart</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #a9b7c6;}
+.s1 { color: #6a8759;}
+.s2 { color: #cc7832;}
+.s3 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Auth.dart</font>
+</center></td></tr></table>
+<pre>
+
+<span class="s0">import </span><span class="s1">'package:firebase_auth/firebase_auth.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'package:flutter_facebook_login/flutter_facebook_login.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'package:google_sign_in/google_sign_in.dart'</span><span class="s2">;</span>
+
+
+<span class="s2">final </span><span class="s0">FirebaseAuth _auth = FirebaseAuth.instance</span><span class="s2">;</span>
+<span class="s2">final </span><span class="s0">GoogleSignIn googleSignIn = GoogleSignIn()</span><span class="s2">;</span>
+<span class="s2">final </span><span class="s0">FacebookLogin facebookLogin = FacebookLogin()</span><span class="s2">;</span>
+
+<span class="s0">Future&lt;FirebaseUser&gt; signInWithGoogle() async {</span>
+  <span class="s2">final </span><span class="s0">GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn()</span><span class="s2">;</span>
+  <span class="s2">final </span><span class="s0">GoogleSignInAuthentication googleSignInAuthentication =</span>
+  <span class="s0">await googleSignInAccount.authentication</span><span class="s2">;</span>
+  <span class="s2">final </span><span class="s0">AuthCredential credential = GoogleAuthProvider.getCredential(</span>
+      <span class="s0">idToken: googleSignInAuthentication.idToken</span><span class="s2">,</span>
+      <span class="s0">accessToken: googleSignInAuthentication.accessToken)</span><span class="s2">;</span>
+  <span class="s2">final </span><span class="s0">AuthResult authResult = await _auth.signInWithCredential(credential)</span><span class="s2">;</span>
+  <span class="s2">final </span><span class="s0">FirebaseUser user = authResult.user</span><span class="s2">;</span>
+
+  <span class="s2">assert</span><span class="s0">(!user.isAnonymous)</span><span class="s2">;</span>
+  <span class="s2">assert</span><span class="s0">(await user.getIdToken() != </span><span class="s2">null</span><span class="s0">)</span><span class="s2">;</span>
+
+  <span class="s2">final </span><span class="s0">FirebaseUser currentUser = await _auth.currentUser()</span><span class="s2">;</span>
+  <span class="s2">assert</span><span class="s0">(currentUser.uid == user.uid)</span><span class="s2">;</span>
+  <span class="s2">return </span><span class="s0">user</span><span class="s2">;</span>
+<span class="s0">}</span>
+
+<span class="s2">void </span><span class="s0">signOutGoogle() async {</span>
+  <span class="s0">await googleSignIn.signOut()</span><span class="s2">;</span>
+<span class="s0">}</span>
+
+
+<span class="s3">// ignore: missing_return</span>
+<span class="s0">Future&lt;FirebaseUser&gt; signInWhitFacebook() async {</span>
+  <span class="s2">final </span><span class="s0">facebookLogin = FacebookLogin()</span><span class="s2">;</span>
+  <span class="s2">final  </span><span class="s0">result = await facebookLogin.logInWithReadPermissions([</span><span class="s1">'public_profile'</span><span class="s0">]</span><span class="s2">,</span><span class="s0">)</span><span class="s2">;</span>
+  <span class="s2">if</span><span class="s0">(result.accessToken !=</span><span class="s2">null</span><span class="s0">){</span>
+    <span class="s2">final </span><span class="s0">authResult = await _auth.signInWithCredential(</span>
+        <span class="s0">FacebookAuthProvider.getCredential(</span>
+          <span class="s0">accessToken: result.accessToken.token</span><span class="s2">,</span>
+        <span class="s0">)</span>
+    <span class="s0">)</span><span class="s2">;</span>
+    <span class="s2">return </span><span class="s0">authResult.user</span><span class="s2">;</span>
+  <span class="s0">}</span>
+<span class="s0">}</span>
+<span class="s2">void </span><span class="s0">signOutFacebook() async {</span>
+  <span class="s0">await facebookLogin.logOut()</span><span class="s2">;</span>
+<span class="s0">}</span>
+
+</pre>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<html>
+<head>
+<title>login.dart</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #a9b7c6;}
+.s1 { color: #6a8759;}
+.s2 { color: #cc7832;}
+.s3 { color: #6897bb;}
+.s4 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+login.dart</font>
+</center></td></tr></table>
+<pre>
+<span class="s0">import </span><span class="s1">'package:flutter/material.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'package:flutter_myapp/Auth.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'package:flutter_myapp/pizza.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'package:font_awesome_flutter/font_awesome_flutter.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'package:firebase_auth/firebase_auth.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'bottomfacebook.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'buttongoogle.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'food.dart'</span><span class="s2">;</span>
+
+<span class="s2">class </span><span class="s0">HOME </span><span class="s2">extends </span><span class="s0">StatefulWidget {</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">_HOMEState createState() =&gt; _HOMEState()</span><span class="s2">;</span>
+<span class="s0">}</span>
+
+<span class="s2">class </span><span class="s0">_HOMEState </span><span class="s2">extends </span><span class="s0">State&lt;HOME&gt; {</span>
+  <span class="s0">FirebaseUser user</span><span class="s2">;</span>
+  <span class="s0">FirebaseAuth _auth = FirebaseAuth.instance</span><span class="s2">;</span>
+  <span class="s2">final </span><span class="s0">TextEditingController _emailController = TextEditingController()</span><span class="s2">;</span>
+  <span class="s2">final </span><span class="s0">TextEditingController _passwordController = TextEditingController()</span><span class="s2">;</span>
+  <span class="s2">final </span><span class="s0">GlobalKey&lt;FormState&gt; _formkey = GlobalKey&lt;FormState&gt;()</span><span class="s2">;</span>
+  <span class="s2">final </span><span class="s0">GlobalKey&lt;ScaffoldState&gt; _scaffoldKey = GlobalKey&lt;ScaffoldState&gt;()</span><span class="s2">;</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">Widget build(BuildContext context) {</span>
+     <span class="s2">return </span><span class="s0">Stack(</span>
+       <span class="s0">children: [</span>
+         <span class="s0">Container(</span>
+           <span class="s0">decoration: BoxDecoration(</span>
+               <span class="s0">image: DecorationImage(</span>
+                   <span class="s0">image: AssetImage(</span><span class="s1">'images/back1.jpg'</span><span class="s0">)</span><span class="s2">,</span>
+                   <span class="s0">fit: BoxFit.fill</span><span class="s2">,</span>
+                 <span class="s0">colorFilter: ColorFilter.mode(Colors.black38</span><span class="s2">, </span><span class="s0">BlendMode.darken)</span><span class="s2">,</span>
+               <span class="s0">)</span>
+           <span class="s0">)</span><span class="s2">,</span>
+         <span class="s0">)</span><span class="s2">,</span>
+         <span class="s0">Scaffold(</span>
+           <span class="s0">key: _scaffoldKey</span><span class="s2">,</span>
+           <span class="s0">backgroundColor: Colors.transparent</span><span class="s2">,</span>
+           <span class="s0">body: SingleChildScrollView(</span>
+             <span class="s0">child: Form(</span>
+               <span class="s0">key: _formkey</span><span class="s2">,</span>
+               <span class="s0">child: Column(</span>
+                 <span class="s0">children: [</span>
+                   <span class="s0">SizedBox(height: </span><span class="s3">200</span><span class="s2">,</span><span class="s0">)</span><span class="s2">,</span>
+                   <span class="s0">Container(</span>
+                     <span class="s0">child: Column(</span>
+                       <span class="s0">children: [</span>
+                         <span class="s0">Padding(</span>
+                           <span class="s0">padding: </span><span class="s2">const </span><span class="s0">EdgeInsets.symmetric(vertical: </span><span class="s3">50</span><span class="s0">)</span><span class="s2">,</span>
+                           <span class="s0">child: Container(</span>
+                             <span class="s0">child: Text(</span>
+                               <span class="s1">'OneClickPizza'</span><span class="s2">,</span>
+                               <span class="s0">style: TextStyle(</span>
+                                 <span class="s0">fontSize: </span><span class="s3">50</span><span class="s2">,</span>
+                                 <span class="s0">color: Colors.white</span><span class="s2">,</span>
+                                 <span class="s0">letterSpacing: -</span><span class="s3">1</span><span class="s2">,</span>
+                                 <span class="s0">fontFamily: </span><span class="s1">'Montserrat'</span><span class="s2">,</span>
+                               <span class="s0">)</span><span class="s2">,</span>
+                             <span class="s0">)</span><span class="s2">,</span>
+                           <span class="s0">)</span><span class="s2">,</span>
+                         <span class="s0">)</span><span class="s2">,</span>
+                         <span class="s0">Padding(</span>
+                           <span class="s0">padding: </span><span class="s2">const </span><span class="s0">EdgeInsets.symmetric(vertical: </span><span class="s3">15</span><span class="s0">)</span><span class="s2">,</span>
+                           <span class="s0">child: Container(</span>
+                             <span class="s0">margin: EdgeInsets.symmetric(horizontal: </span><span class="s3">10</span><span class="s0">)</span><span class="s2">,</span>
+                             <span class="s0">height: </span><span class="s3">60</span><span class="s2">,</span>
+                             <span class="s0">width: </span><span class="s3">340</span><span class="s2">,</span>
+                             <span class="s0">decoration: BoxDecoration(</span>
+                               <span class="s0">color : Colors.grey[</span><span class="s3">500</span><span class="s0">].withOpacity(</span><span class="s3">0.5</span><span class="s0">)</span><span class="s2">,</span>
+                               <span class="s0">borderRadius: BorderRadius.circular(</span><span class="s3">20</span><span class="s0">)</span><span class="s2">,</span>
+                             <span class="s0">)</span><span class="s2">,</span>
+                             <span class="s0">child: Center(</span>
+                               <span class="s0">child: TextFormField(</span>
+                                 <span class="s0">controller: _emailController</span><span class="s2">,</span>
+                                 <span class="s0">decoration: InputDecoration(</span>
+                                   <span class="s0">border: InputBorder.none</span><span class="s2">,</span>
+                                   <span class="s0">hintStyle: </span><span class="s2">new </span><span class="s0">TextStyle(color: Colors.white)</span><span class="s2">,</span>
+                                   <span class="s0">prefixIcon: Padding(</span>
+                                     <span class="s0">padding: </span><span class="s2">const </span><span class="s0">EdgeInsets.symmetric(horizontal: </span><span class="s3">20</span><span class="s2">,</span><span class="s0">)</span><span class="s2">,</span>
+                                     <span class="s0">child: Icon(FontAwesomeIcons.envelope</span><span class="s2">,</span>
+                                       <span class="s0">size: </span><span class="s3">25</span><span class="s2">,</span>
+                                       <span class="s0">color: Colors.white</span><span class="s2">,</span><span class="s0">)</span><span class="s2">,</span>
+                                   <span class="s0">)</span><span class="s2">,</span>
+                                   <span class="s0">hintText: </span><span class="s1">&quot;Email&quot;</span><span class="s2">,</span>
+                                 <span class="s0">)</span><span class="s2">,</span>
+                                 <span class="s0">autocorrect: </span><span class="s2">false,</span>
+                                 <span class="s0">keyboardType: TextInputType.emailAddress</span><span class="s2">,</span>
+                                 <span class="s0">textInputAction: TextInputAction.next</span><span class="s2">,</span>
+                                 <span class="s0">validator: (String val){</span>
+                                   <span class="s2">if</span><span class="s0">(val.isEmpty){</span>
+                                     <span class="s2">return </span><span class="s1">&quot;please enter your email&quot;</span><span class="s2">;</span>
+                                   <span class="s0">}</span>
+                                   <span class="s2">return null;</span>
+                                 <span class="s0">}</span><span class="s2">,</span>
+                               <span class="s0">)</span><span class="s2">,</span>
+                             <span class="s0">)</span><span class="s2">,</span>
+                           <span class="s0">)</span><span class="s2">,</span>
+                         <span class="s0">)</span><span class="s2">,</span>
+                         <span class="s0">Padding(</span>
+                           <span class="s0">padding: </span><span class="s2">const </span><span class="s0">EdgeInsets.symmetric(vertical: </span><span class="s3">15</span><span class="s0">)</span><span class="s2">,</span>
+                           <span class="s0">child: Container(</span>
+                             <span class="s0">margin: EdgeInsets.symmetric(horizontal: </span><span class="s3">10</span><span class="s0">)</span><span class="s2">,</span>
+                             <span class="s0">height: </span><span class="s3">60</span><span class="s2">,</span>
+                             <span class="s0">width: </span><span class="s3">340</span><span class="s2">,</span>
+                             <span class="s0">decoration: BoxDecoration(</span>
+                               <span class="s0">color : Colors.grey[</span><span class="s3">500</span><span class="s0">].withOpacity(</span><span class="s3">0.5</span><span class="s0">)</span><span class="s2">,</span>
+                               <span class="s0">borderRadius: BorderRadius.circular(</span><span class="s3">20</span><span class="s0">)</span><span class="s2">,</span>
+                             <span class="s0">)</span><span class="s2">,</span>
+                             <span class="s0">child: Center(</span>
+                               <span class="s0">child: TextFormField(</span>
+                                 <span class="s0">controller: _passwordController</span><span class="s2">,</span>
+                                 <span class="s0">decoration: InputDecoration(</span>
+                                   <span class="s0">border: InputBorder.none</span><span class="s2">,</span>
+                                   <span class="s0">hintStyle: </span><span class="s2">new </span><span class="s0">TextStyle(color: Colors.white)</span><span class="s2">,</span>
+                                   <span class="s0">prefixIcon: Padding(</span>
+                                     <span class="s0">padding: </span><span class="s2">const </span><span class="s0">EdgeInsets.symmetric(horizontal: </span><span class="s3">20</span><span class="s2">,</span><span class="s0">)</span><span class="s2">,</span>
+                                     <span class="s0">child: Icon(FontAwesomeIcons.lock</span><span class="s2">,</span>
+                                       <span class="s0">size: </span><span class="s3">25</span><span class="s2">,</span>
+                                       <span class="s0">color: Colors.white</span><span class="s2">,</span><span class="s0">)</span><span class="s2">,</span>
+                                   <span class="s0">)</span><span class="s2">,</span>
+                                   <span class="s0">hintText: </span><span class="s1">&quot;Password&quot;</span><span class="s2">,</span>
+                                 <span class="s0">)</span><span class="s2">,</span>
+                                 <span class="s0">obscureText: </span><span class="s2">true,</span>
+                                 <span class="s0">textInputAction: TextInputAction.done</span><span class="s2">,</span>
+                                 <span class="s0">validator: (String val){</span>
+                                   <span class="s2">if</span><span class="s0">(val.isEmpty){</span>
+                                     <span class="s2">return </span><span class="s1">&quot;please enter your password&quot;</span><span class="s2">;</span>
+                                   <span class="s0">}</span>
+                                   <span class="s2">return null;</span>
+                                 <span class="s0">}</span><span class="s2">,</span>
+                               <span class="s0">)</span><span class="s2">,</span>
+                             <span class="s0">)</span><span class="s2">,</span>
+                           <span class="s0">)</span><span class="s2">,</span>
+                         <span class="s0">)</span><span class="s2">,</span>
+                       <span class="s0">]</span><span class="s2">,</span>
+                     <span class="s0">)</span><span class="s2">,</span>
+                   <span class="s0">)</span><span class="s2">,</span>
+                   <span class="s0">SizedBox(height: </span><span class="s3">30</span><span class="s2">,</span><span class="s0">)</span><span class="s2">,</span>
+                   <span class="s0">Container(</span>
+                     <span class="s0">child: Column(</span>
+                       <span class="s0">children: [</span>
+                         <span class="s0">Container(</span>
+                           <span class="s0">child:  SizedBox(</span>
+                             <span class="s0">width: </span><span class="s3">250</span><span class="s2">,</span>
+                             <span class="s0">height: </span><span class="s3">50 </span><span class="s2">,</span>
+                             <span class="s4">// ignore: deprecated_member_use</span>
+                             <span class="s0">child: RaisedButton(</span>
+                               <span class="s0">onPressed:() async{</span>
+                                 <span class="s2">if</span><span class="s0">(_formkey.currentState.validate()){</span>
+                                   <span class="s0">await _loginInWhitEmailPassword()</span><span class="s2">;</span>
+                                 <span class="s0">}</span>
+                               <span class="s0">}</span><span class="s2">,</span>
+                               <span class="s0">splashColor: Colors.transparent</span><span class="s2">,</span>
+                               <span class="s0">elevation: </span><span class="s3">50</span><span class="s2">,</span>
+                               <span class="s0">highlightElevation: </span><span class="s3">30</span><span class="s2">,</span>
+                               <span class="s0">color: Colors.redAccent</span><span class="s2">,</span>
+                               <span class="s0">shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(</span><span class="s3">30</span><span class="s0">)))</span><span class="s2">,</span>
+                               <span class="s0">child :</span>
+                               <span class="s0">Text(</span><span class="s1">'Login in'</span><span class="s2">, </span><span class="s0">style:</span>
+                               <span class="s0">TextStyle(</span>
+                                 <span class="s0">fontSize: </span><span class="s3">20</span><span class="s2">,</span>
+                                 <span class="s0">color: Colors.white</span><span class="s2">,</span>
+                                 <span class="s0">fontWeight: FontWeight.bold</span><span class="s2">,</span>
+                               <span class="s0">)</span><span class="s2">,</span>
+
+                               <span class="s0">)</span><span class="s2">,</span>
+                             <span class="s0">)</span><span class="s2">,</span>
+                           <span class="s0">)</span><span class="s2">,</span>
+                         <span class="s0">)</span><span class="s2">,</span>
+                         <span class="s0">SizedBox(height: </span><span class="s3">50</span><span class="s2">,</span><span class="s0">)</span><span class="s2">,</span>
+                         <span class="s0">Row(</span>
+                           <span class="s0">mainAxisAlignment: MainAxisAlignment.center</span><span class="s2">,</span>
+                           <span class="s0">children: &lt;Widget&gt;[</span>
+                             <span class="s0">buttonMedia(</span>
+                               <span class="s0">press: () {</span>
+                                 <span class="s0">signInWithGoogle().then(</span>
+                                       <span class="s0">(value) =&gt; {</span>
+                                     <span class="s2">this</span><span class="s0">.user = user</span><span class="s2">,</span>
+                                     <span class="s0">Navigator.push(</span>
+                                    <span class="s0">(context)</span><span class="s2">,</span>
+                                    <span class="s0">MaterialPageRoute(</span>
+                                   <span class="s0">builder: (context) {</span>
+                                   <span class="s2">return </span><span class="s0">PIZZA()</span><span class="s2">;</span>
+                                                     <span class="s0">}</span><span class="s2">,</span>
+                                     <span class="s0">)</span><span class="s2">,</span>
+                                     <span class="s0">)</span>
+                                   <span class="s0">}</span><span class="s2">,</span>
+                                 <span class="s0">)</span><span class="s2">;</span>
+                               <span class="s0">}</span><span class="s2">,</span>
+                             <span class="s0">)</span><span class="s2">,</span>
+                             <span class="s0">Padding(</span>
+                               <span class="s0">padding: </span><span class="s2">const </span><span class="s0">EdgeInsets.symmetric(horizontal: </span><span class="s3">25</span><span class="s0">)</span><span class="s2">,</span>
+                               <span class="s0">child: buttonMediafacebook(</span>
+                                 <span class="s0">press: () {</span>
+                                   <span class="s0">signInWhitFacebook().then(</span>
+                                         <span class="s0">(value) =&gt; {</span>
+                                       <span class="s2">this</span><span class="s0">.user = user</span><span class="s2">,</span>
+                                       <span class="s0">Navigator.of(context).pushNamed(</span><span class="s1">'/pizza'</span><span class="s0">)</span><span class="s2">,</span>
+                                     <span class="s0">}</span><span class="s2">,</span>
+                                   <span class="s0">)</span><span class="s2">;</span>
+                                 <span class="s0">}</span><span class="s2">,</span>
+                               <span class="s0">)</span><span class="s2">,</span>
+                             <span class="s0">)</span>
+                           <span class="s0">]</span><span class="s2">,</span>
+                         <span class="s0">)</span><span class="s2">,</span>
+                         <span class="s0">Padding(</span>
+                           <span class="s0">padding: </span><span class="s2">const </span><span class="s0">EdgeInsets.symmetric(vertical: </span><span class="s3">15</span><span class="s0">)</span><span class="s2">,</span>
+                           <span class="s0">child: Row(</span>
+                             <span class="s0">mainAxisAlignment: MainAxisAlignment.center</span><span class="s2">,</span>
+                             <span class="s0">children: &lt;Widget&gt;[</span>
+                               <span class="s0">Text(</span><span class="s1">&quot;D'ont have an Account? &quot;</span><span class="s2">,</span><span class="s0">style: TextStyle(fontSize: </span><span class="s3">20</span><span class="s2">,</span><span class="s0">fontWeight: FontWeight.w400</span><span class="s2">,</span><span class="s0">color: Colors.white)</span><span class="s2">,</span><span class="s0">)</span><span class="s2">,</span>
+                               <span class="s0">GestureDetector(</span>
+                                   <span class="s0">onTap: (){ Navigator.of(context).pushNamed(</span><span class="s1">'/sign'</span><span class="s0">)</span><span class="s2">;</span><span class="s0">}</span><span class="s2">,</span>
+                                   <span class="s0">child:</span>
+                                   <span class="s0">Text(</span><span class="s1">&quot;Sign in&quot;</span><span class="s2">,</span><span class="s0">style: TextStyle(fontSize: </span><span class="s3">20</span><span class="s2">,</span><span class="s0">color: Colors.red</span><span class="s2">, </span><span class="s0">decoration: TextDecoration.underline</span><span class="s2">,</span><span class="s0">)</span><span class="s2">,</span><span class="s0">))</span>
+                             <span class="s0">]</span><span class="s2">,</span>
+                           <span class="s0">)</span><span class="s2">,</span>
+                         <span class="s0">)</span><span class="s2">,</span>
+
+                       <span class="s0">]</span><span class="s2">,</span>
+                     <span class="s0">)</span><span class="s2">,</span>
+                   <span class="s0">)</span><span class="s2">,</span>
+                 <span class="s0">]</span><span class="s2">,</span>
+               <span class="s0">)</span><span class="s2">,</span>
+             <span class="s0">)</span><span class="s2">,</span>
+           <span class="s0">)</span><span class="s2">,</span>
+         <span class="s0">)</span>
+       <span class="s0">]</span><span class="s2">,</span>
+     <span class="s0">)</span><span class="s2">;</span>
+  <span class="s0">}</span>
+   <span class="s0">Future&lt;</span><span class="s2">void</span><span class="s0">&gt; _loginInWhitEmailPassword() async{</span>
+    <span class="s2">try </span><span class="s0">{</span>
+      <span class="s2">final </span><span class="s0">user = (await _auth.signInWithEmailAndPassword(email: _emailController.text</span><span class="s2">, </span><span class="s0">password: _passwordController.text))</span>
+          <span class="s0">.user</span><span class="s2">;</span>
+           <span class="s2">if</span><span class="s0">(!user.isEmailVerified)</span>
+             <span class="s0">{</span>
+               <span class="s0">await user.sendEmailVerification()</span><span class="s2">;</span>
+             <span class="s0">}</span>
+          <span class="s0">Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(_)=&gt;PIZZA()))</span><span class="s2">;</span>
+
+    <span class="s0">} </span><span class="s2">catch</span><span class="s0">(e){</span>
+      <span class="s4">// ignore: deprecated_member_use</span>
+      <span class="s0">_scaffoldKey.currentState.showSnackBar(SnackBar(content: Text(</span><span class="s1">&quot;Failed to sign in email and password&quot;</span><span class="s0">)))</span><span class="s2">;</span>
+      <span class="s0">print(e.toString())</span><span class="s2">;</span>
+    <span class="s0">}</span>
+  <span class="s0">}</span>
+<span class="s0">}</span>
+</pre>
+</body>
+</html>

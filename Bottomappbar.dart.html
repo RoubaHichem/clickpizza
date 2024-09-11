@@ -1,0 +1,89 @@
+<html>
+<head>
+<title>Bottomappbar.dart</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #a9b7c6;}
+.s1 { color: #6a8759;}
+.s2 { color: #cc7832;}
+.s3 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Bottomappbar.dart</font>
+</center></td></tr></table>
+<pre>
+<span class="s0">import </span><span class="s1">'package:flutter/material.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'package:flutter_myapp/login.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'package:flutter_myapp/pizza.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'package:font_awesome_flutter/font_awesome_flutter.dart'</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">'Profile.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'buy.dart'</span><span class="s2">;</span>
+
+<span class="s2">class </span><span class="s0">BottomBar </span><span class="s2">extends </span><span class="s0">StatelessWidget {</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">Widget build(BuildContext context) {</span>
+    <span class="s2">return </span><span class="s0">Container(</span>
+      <span class="s0">child: BottomAppBar(</span>
+         <span class="s0">color: Colors.transparent</span><span class="s2">,</span>
+         <span class="s0">elevation: </span><span class="s3">0.0</span><span class="s2">,</span>
+        <span class="s0">child: Padding(</span>
+          <span class="s0">padding: EdgeInsets.symmetric(vertical: </span><span class="s3">5</span><span class="s0">)</span><span class="s2">,</span>
+           <span class="s0">child: Row(</span>
+             <span class="s0">mainAxisAlignment: MainAxisAlignment.spaceEvenly</span><span class="s2">,</span>
+             <span class="s0">children: &lt;Widget&gt;[</span>
+               <span class="s0">GestureDetector(</span>
+                 <span class="s0">onTap: (){</span>
+                   <span class="s0">Navigator.of(context).push(MaterialPageRoute(builder:(context)=&gt;PIZZA()))</span><span class="s2">;</span>
+                 <span class="s0">}</span><span class="s2">,</span>
+                 <span class="s0">child:Container(</span>
+                     <span class="s0">height: </span><span class="s3">50</span><span class="s2">,</span>
+                     <span class="s0">width: </span><span class="s3">30</span><span class="s2">,</span>
+                     <span class="s0">child: Image.asset(</span>
+                       <span class="s1">&quot;images/home.png&quot;</span><span class="s2">,</span>
+                       <span class="s0">fit: BoxFit.contain</span><span class="s2">,</span>
+                     <span class="s0">)</span>
+                 <span class="s0">)</span><span class="s2">,</span>
+               <span class="s0">)</span><span class="s2">,</span>
+               <span class="s0">GestureDetector(</span>
+                 <span class="s0">onTap: (){</span>
+                   <span class="s0">Navigator.of(context).push(MaterialPageRoute(builder:(context)=&gt;PROFILE()))</span><span class="s2">;</span>
+                 <span class="s0">}</span><span class="s2">,</span>
+                 <span class="s0">child:Container(</span>
+                     <span class="s0">height: </span><span class="s3">50</span><span class="s2">,</span>
+                     <span class="s0">width: </span><span class="s3">30</span><span class="s2">,</span>
+                     <span class="s0">child: Image.asset(</span>
+                      <span class="s1">&quot;images/user.png&quot;</span><span class="s2">,</span>
+                       <span class="s0">fit : BoxFit.contain</span><span class="s2">,</span>
+                     <span class="s0">)</span><span class="s2">,</span>
+                 <span class="s0">)</span><span class="s2">,</span>
+               <span class="s0">)</span><span class="s2">,</span>
+               <span class="s0">GestureDetector(</span>
+                 <span class="s0">onTap: (){</span>
+                   <span class="s0">Navigator.of(context).push(MaterialPageRoute(builder:(context)=&gt;BUY()))</span><span class="s2">;</span>
+                 <span class="s0">}</span><span class="s2">,</span>
+                 <span class="s0">child:Container(</span>
+                   <span class="s0">height: </span><span class="s3">50</span><span class="s2">,</span>
+                   <span class="s0">width: </span><span class="s3">30</span><span class="s2">,</span>
+                   <span class="s0">child: Image.asset(</span>
+                     <span class="s1">&quot;images/buy.png&quot;</span><span class="s2">,</span>
+                     <span class="s0">fit :BoxFit.contain</span><span class="s2">,</span>
+                   <span class="s0">)</span><span class="s2">,</span>
+                 <span class="s0">)</span><span class="s2">,</span>
+               <span class="s0">)</span><span class="s2">,</span>
+             <span class="s0">]</span><span class="s2">,</span>
+           <span class="s0">)</span><span class="s2">,</span>
+        <span class="s0">)</span><span class="s2">,</span>
+      <span class="s0">)</span><span class="s2">,</span>
+    <span class="s0">)</span><span class="s2">;</span>
+  <span class="s0">}</span>
+
+<span class="s0">}</span>
+</pre>
+</body>
+</html>
